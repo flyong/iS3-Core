@@ -58,6 +58,7 @@ namespace iS3.Core
         //     Domains of the project, such as geology domain, etc.
         //     The domain is indexed by its name.
         protected List<Domain> _domains;
+
         [DataMember]
         public List< Domain> domains
         {
@@ -113,7 +114,9 @@ namespace iS3.Core
         //
         public bool loadDefinition(string file)
         {
-            string filePath = Runtime.dataPath + "\\" + file.Substring(0, file.Length - 4) + "\\" + file;
+
+
+            string filePath = Runtime.dataPath + "/" + file;
             if (File.Exists(filePath) == false)
             {
                 ErrorReport.Report("Error: defintion file doesn't exist: " + filePath);
@@ -152,12 +155,9 @@ namespace iS3.Core
             {
                 projDef.DatabaseName = shortName;
             }
-            else
-            {
-                projDef.DatabaseName = IsMdb(projDef.DatabaseName) ? Runtime.projPath + "\\" + projDef.DatabaseName : projDef.DatabaseName;
-            }
-            // set dataservice path
-            Globals.iS3Service.DataService.initializeDataService(projDef.DatabaseName);
+            // set dataservice path to project database
+            Globals.iS3Service.DataService.GetInstance().initialDataService(projDef.DatabaseName);
+
             // Load domain definition
             IEnumerable<XElement> nodes = root.Elements("Domain");
             foreach (XElement node in nodes)
@@ -172,18 +172,11 @@ namespace iS3.Core
             return true;
         }
 
-        bool IsMdb(string DatabaseName)
-        {
-            if ((DatabaseName.Length > 3) && (DatabaseName.Substring(DatabaseName.Length - 3, 3).ToUpper() == "MDB"))
-                return true;
-            else
-                return false;
-        }
         public override string ToString()
         {
             string domainStr = "";
-            foreach (string name in _domains.Keys)
-                domainStr += "'" + name + "',";
+            foreach (Domain domain in _domains)
+                domainStr += "'" + domain + "',";
 
             string str = string.Format(
                 "Project: ID={0}, Domains={1}",
@@ -230,9 +223,8 @@ namespace iS3.Core
                 if (tree.RefDomainName == null || tree.RefObjsName == null)
                     continue;
 
-                Domain domain = null;
-                if (domains.ContainsKey(tree.RefDomainName))
-                    domain = domains[tree.RefDomainName];
+                Domain domain = domains.FirstOrDefault(x => x.name == tree.RefDomainName);
+
                 if (domain == null)
                     continue;
 
@@ -272,17 +264,9 @@ namespace iS3.Core
             // 
             prj.loadDefinition(definitionFile);
 
-            // Load project data
-            //
-            //dbContext = prj.getDbContext();
-            //bool success = dbContext.Open();
-            //if (!success)
-            //    return prj;
-
-            foreach (Domain domain in prj.domains.Values)
+            foreach (Domain domain in prj.domains)
             {
                 // load all objects into domain
-                //domain.loadAllObjects(dbContext);
                 domain.loadAllObjects();
                 // sync objects on the tree
                 prj.syncObjectsOnTree(domain.root);
@@ -290,8 +274,8 @@ namespace iS3.Core
                 // which is specified in the DGObjectsDefinition.GISLayerName
                 foreach (var def in domain.objsDefinitions)
                 {
-                    string defName = def.Key;
-                    string layerID = def.Value.GISLayerName;
+                    string defName = def.Name;
+                    string layerID = def.GISLayerName;
                     if (layerID != null && layerID.Length > 0)
                     {
                         DGObjects objs = domain.objsContainer[defName];
@@ -300,7 +284,6 @@ namespace iS3.Core
                     }
                 }
             }
-            //dbContext.Close();
 
             return prj;
         }
@@ -437,15 +420,6 @@ namespace iS3.Core
             }
 
             return selectedObjsDict;
-            //DGObjects objs = domain.getObjects(objType);
-            //if (objs == null)
-            //    return null;
-
-            //List<DGObject> selectedObjs = getSelected(objs);
-            //if (selectedObjs != null && selectedObjs.Count > 0)
-            //    return selectedObjs;
-            //else
-            //    return null;
         }
 
         List<DGObject> getSelected(DGObjects objs)
