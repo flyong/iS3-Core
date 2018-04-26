@@ -76,8 +76,7 @@ namespace iS3.Core
         // Remarks:
         //     Object definition name is used as the key.
         [DataMember]
-        public Dictionary<string, DGObjectsDefinition>
-            objsDefinitions
+        public List<DGObjectsDefinition>   objsDefinitions
         { get; set; }
 
         // Summary:
@@ -104,7 +103,7 @@ namespace iS3.Core
             root = new Tree();
             root.Name = name;
 
-            objsDefinitions = new Dictionary<string, DGObjectsDefinition>();
+            objsDefinitions = new List<DGObjectsDefinition>();
             objsContainer = new Dictionary<string, DGObjects>();
         }
 
@@ -158,7 +157,7 @@ namespace iS3.Core
                 foreach (XElement node in nodes)
                 {
                     DGObjectsDefinition def = DGObjectsDefinition.LoadDefinition(node);
-                    domain.objsDefinitions.Add(def.Name, def);
+                    domain.objsDefinitions.Add( def);
                 }
             }
 
@@ -167,31 +166,13 @@ namespace iS3.Core
 
         // Summary:
         //     Load objects from database
-        //public bool loadObjects(string objDefName, DbContext dbContext)
-        //{
-        //    if (parent == null)
-        //        return false;
 
-        //    DGObjectsDefinition def = objsDefinitions[objDefName];
-        //    if (def == null)
-        //        return false;
-
-        //    DGObjects objs = new DGObjects(def);
-        //    bool success = objs.load(dbContext);
-        //    objs.parent = this;
-
-        //    // Old objs will be replaced recently loaded objects.
-        //    if (success)
-        //        objsContainer[def.Name] = objs;
-
-        //    return success;
-        //}
         public bool loadObjects(string objDefName)
         {
             if (parent == null)
                 return false;
 
-            DGObjectsDefinition def = objsDefinitions[objDefName];
+            DGObjectsDefinition def = objsDefinitions.FirstOrDefault(x => x.Name == objDefName);
             if (def == null)
                 return false;
 
@@ -206,24 +187,9 @@ namespace iS3.Core
 
             return success;
         }
+
         // Summary:
         //     Load all objects from database
-        //public bool loadAllObjects(DbContext dbContext)
-        //{
-        //    if (parent == null)
-        //        return false;
-
-        //    bool success = true;
-
-        //    foreach (DGObjectsDefinition def in objsDefinitions.Values)
-        //    {
-        //        bool loaded = loadObjects(def.Name, dbContext);
-        //        if (!loaded)
-        //            success = false;
-        //    }
-
-        //    return success;
-        //}
         public bool loadAllObjects()
         {
             if (parent == null)
@@ -231,7 +197,7 @@ namespace iS3.Core
 
             bool success = true;
 
-            foreach (DGObjectsDefinition def in objsDefinitions.Values)
+            foreach (DGObjectsDefinition def in objsDefinitions)
             {
                 bool loaded = loadObjects(def.Name);
                 if (!loaded)
@@ -253,7 +219,7 @@ namespace iS3.Core
         public DGObjectsCollection getObjects(string objType)
         {
             IEnumerable<DGObjectsDefinition> defs =
-                objsDefinitions.Values.Where(x => x.Type == objType);
+                objsDefinitions.Where(x => x.Type == objType);
             if (defs == null || defs.Count() == 0)
                 return null;
 

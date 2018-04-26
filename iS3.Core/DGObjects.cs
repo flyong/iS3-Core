@@ -215,18 +215,6 @@ namespace iS3.Core
             return str;
         }
 
-        //public bool load(DbContext dbContext)
-        //{
-        //    rawDataSet = new DataSet(definition.Type);
-
-        //    DGObject objHelper =
-        //        ObjectHelper.CreateDGObjectFromSubclassName(definition.Type);
-        //    bool success = objHelper.LoadObjs(this, dbContext);
-        //    buildIDIndex();
-        //    buildRowViewIndex();
-
-        //    return success;
-        //}
         public bool load()
         {
             rawDataSet = new DataSet(definition.Type);
