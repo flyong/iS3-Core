@@ -5,6 +5,7 @@ using System.Windows;
 
 using iS3.Core.Shape;
 using iS3.Core.Serialization;
+using System.ComponentModel.DataAnnotations;
 
 namespace iS3.Core
 {
@@ -80,7 +81,7 @@ namespace iS3.Core
         {
             _rawData = rawData;
         }
-
+        [Key]
         [DataMember]
         public int ID
         {
