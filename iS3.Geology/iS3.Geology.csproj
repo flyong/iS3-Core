@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A24A2662-9A36-45C4-8758-66EA2F10C663}</ProjectGuid>
+    <ProjectGuid>{9E5FB980-BEB1-41EA-9194-A9177917517B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>iS3.Core</RootNamespace>
-    <AssemblyName>iS3.Core</AssemblyName>
+    <RootNamespace>iS3.Geology</RootNamespace>
+    <AssemblyName>iS3.Geology</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,24 +30,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
+    <Reference Include="iS3.Core">
+      <HintPath>..\iS3.Output\bin\iS3.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Windows" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DGObject.cs" />
-    <Compile Include="IRepository.cs" />
+    <Compile Include="IRepository\IBoreholeGeologyRepository.cs" />
+    <Compile Include="IRepository\IBoreholeRepository.cs" />
+    <Compile Include="Models\Borehole.cs" />
+    <Compile Include="Models\BoreholeGeology.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

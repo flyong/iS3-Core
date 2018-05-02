@@ -5,6 +5,18 @@ VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iS3.Core", "iS3.Core\iS3.Core.csproj", "{A24A2662-9A36-45C4-8758-66EA2F10C663}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iS3.Core.Server", "iS3.Core.Server\iS3.Core.Server.csproj", "{ED42D7A7-E6E4-4B74-B5D7-C85E93224840}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iS3.Core.Client", "iS3.Core.Client\iS3.Core.Client.csproj", "{512D8F9F-2A0A-4D84-BF81-223E636001C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iS3.Geology", "iS3.Geology\iS3.Geology.csproj", "{9E5FB980-BEB1-41EA-9194-A9177917517B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iS3.Geology.Client", "iS3.Geology.Client\iS3.Geology.Client.csproj", "{D76E3B86-BB9B-4972-9DF7-F9E846E7E719}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iS3.Geology.Server", "iS3.Geology.Server\iS3.Geology.Server.csproj", "{47E8E452-37BF-4331-8A86-3CC35FEFD67E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iS3.Core.Test", "iS3.Core.Test\iS3.Core.Test.csproj", "{59AB1B96-ADCF-43CE-B68E-9D3E69AB1F16}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +27,30 @@ Global
 		{A24A2662-9A36-45C4-8758-66EA2F10C663}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A24A2662-9A36-45C4-8758-66EA2F10C663}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A24A2662-9A36-45C4-8758-66EA2F10C663}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED42D7A7-E6E4-4B74-B5D7-C85E93224840}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED42D7A7-E6E4-4B74-B5D7-C85E93224840}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED42D7A7-E6E4-4B74-B5D7-C85E93224840}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED42D7A7-E6E4-4B74-B5D7-C85E93224840}.Release|Any CPU.Build.0 = Release|Any CPU
+		{512D8F9F-2A0A-4D84-BF81-223E636001C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{512D8F9F-2A0A-4D84-BF81-223E636001C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{512D8F9F-2A0A-4D84-BF81-223E636001C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{512D8F9F-2A0A-4D84-BF81-223E636001C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E5FB980-BEB1-41EA-9194-A9177917517B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E5FB980-BEB1-41EA-9194-A9177917517B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E5FB980-BEB1-41EA-9194-A9177917517B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E5FB980-BEB1-41EA-9194-A9177917517B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D76E3B86-BB9B-4972-9DF7-F9E846E7E719}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D76E3B86-BB9B-4972-9DF7-F9E846E7E719}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D76E3B86-BB9B-4972-9DF7-F9E846E7E719}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D76E3B86-BB9B-4972-9DF7-F9E846E7E719}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47E8E452-37BF-4331-8A86-3CC35FEFD67E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47E8E452-37BF-4331-8A86-3CC35FEFD67E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47E8E452-37BF-4331-8A86-3CC35FEFD67E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47E8E452-37BF-4331-8A86-3CC35FEFD67E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59AB1B96-ADCF-43CE-B68E-9D3E69AB1F16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59AB1B96-ADCF-43CE-B68E-9D3E69AB1F16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59AB1B96-ADCF-43CE-B68E-9D3E69AB1F16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59AB1B96-ADCF-43CE-B68E-9D3E69AB1F16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
