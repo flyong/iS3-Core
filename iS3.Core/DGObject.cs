@@ -3,8 +3,8 @@ using System.Data;
 using System.Collections.Generic;
 using System.Windows;
 
-using iS3.Core.Shape;
-using iS3.Core.Serialization;
+//using iS3.Core.Shape;
+//using iS3.Core.Serialization;
 using System.ComponentModel.DataAnnotations;
 
 namespace iS3.Core
@@ -55,11 +55,11 @@ namespace iS3.Core
         // raw data from database
         protected DataRow _rawData;
 
-        // shape for the object
-        protected ShapeObject _shp;
+        //// shape for the object
+        //protected ShapeObject _shp;
 
-        // parent of the object
-        protected DGObjects _parent;
+        //// parent of the object
+        //protected DGObjects _parent;
 
         // return a string that will be used as the unique key to this object
         public virtual string key
@@ -67,11 +67,11 @@ namespace iS3.Core
             get { return _name; }
         }
 
-        public DGObjects parent
-        {
-            get { return _parent; }
-            set { _parent = value; }
-        }
+        //public DGObjects parent
+        //{
+        //    get { return _parent; }
+        //    set { _parent = value; }
+        //}
 
         // constructor
         public DGObject()
@@ -81,8 +81,9 @@ namespace iS3.Core
         {
             _rawData = rawData;
         }
-        [Key]
+
         [DataMember]
+        [Key]
         public int ID
         {
             get { return _id; }
@@ -106,12 +107,12 @@ namespace iS3.Core
             get { return _desc; }
             set { _desc = value; }
         }
-        [DataMember]
-        public ShapeObject Shape
-        {
-            get { return _shp; }
-            set { _shp = value; }
-        }
+        //[DataMember]
+        //public ShapeObject Shape
+        //{
+        //    get { return _shp; }
+        //    set { _shp = value; }
+        //}
 
         public DataRow RawData
         {
@@ -120,12 +121,12 @@ namespace iS3.Core
 
         // Summary:
         //    Load objects from database
-        public virtual bool LoadObjs(DGObjects objs)
-        {
-            DGObjectLoader loader2 = new DGObjectLoader();
-            bool success = loader2.Load(objs);
-            return success;
-        }
+        //public virtual bool LoadObjs(DGObjects objs)
+        //{
+        //    DGObjectLoader loader2 = new DGObjectLoader();
+        //    bool success = loader2.Load(objs);
+        //    return success;
+        //}
 
         public override string ToString()
         {
@@ -143,10 +144,10 @@ namespace iS3.Core
         public virtual List<DataView> tableViews(IEnumerable<DGObject> objs)
         {
             List<DataView> dataViews = new List<DataView>();
-            DataTable table = parent.rawDataSet.Tables[0];
-            string filter = idFilter(objs);
-            DataView view = new DataView(table, filter, "[ID]", DataViewRowState.CurrentRows);
-            dataViews.Add(view);
+            //DataTable table = parent.rawDataSet.Tables[0];
+            //string filter = idFilter(objs);
+            //DataView view = new DataView(table, filter, "[ID]", DataViewRowState.CurrentRows);
+            //dataViews.Add(view);
             return dataViews;
         }
 

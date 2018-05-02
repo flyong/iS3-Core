@@ -20,7 +20,7 @@ namespace iS3.Geology
         [DataMember]
         public string Type { get; set; }
 
-        public List<BoreholeGeology> Geologies { get; set; }
+       // public List<BoreholeGeology> Geologies { get; set; }
 
         public Borehole()
         { }
